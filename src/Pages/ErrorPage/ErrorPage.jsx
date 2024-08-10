@@ -9,7 +9,7 @@ function ErrorPage(){
 
     return(
         <div className="flex justify-center items-center w-full flex-grow text-3xl font-carter flex-col gap-5 tracking-wide">
-            {error !== undefined ? <h1>error</h1> : <h1>Not Found</h1>}
+            {error !== undefined ? <h1>{error}</h1> : <h1>Not Found</h1>}
             <Link to='/start'><StartGameBtn value={'Try Again'}/></Link>
         </div>
     )
