@@ -37,7 +37,12 @@ function PlayGame(){
         if (chance >= 6) {
             setInfo('You Lose!!');
             setWinnerModal(true);
-        } else if (usedLetters.join('').toUpperCase() === wordSelected.toUpperCase()) {
+        }
+
+        const allLettersGuessed = wordSelected.split('').every(letter => 
+            usedLetters.includes(letter.toUpperCase())
+        );
+        if (allLettersGuessed) {
             setInfo('You Win!!');
             setWinnerModal(true);
         }
@@ -64,7 +69,7 @@ function PlayGame(){
 
             </div>
 
-            <div className="">
+            <div className="mt-2">
                 <HangMan chance={chance} />
             </div>
 
@@ -80,3 +85,16 @@ function PlayGame(){
 }
 
 export default PlayGame
+
+{/*  every() method of Array instances tests whether all elements in the array pass the test implemented by the provided function. 
+            
+             let allLettersGuessed = true;
+
+                for (let letter of wordSelected.toUpperCase()) {
+                    if (!usedLetters.includes(letter)) {
+                        allLettersGuessed = false;
+                        break;
+                    }
+                }
+            
+*/ }

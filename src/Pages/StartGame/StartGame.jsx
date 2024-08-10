@@ -8,7 +8,12 @@ function StartGame(){
     async function handleSubmit(value){
         const [word, hint] = await getWord(value)
         
-        navigate('/play', {state:{ wordSelected: word, hint: hint}})
+        if(word === undefined){
+            navigate('*', {state:{error:'No Word found for this try again'}})
+        }else{
+            navigate('/play', {state:{ wordSelected: word, hint: hint}})
+        }
+
     }
 
     return(

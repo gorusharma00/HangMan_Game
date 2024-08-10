@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import PlayGame from './Pages/PlayGame/PlayGame'
 import StartGame from './Pages/StartGame/StartGame'
+import ErrorPage from './Pages/ErrorPage/ErrorPage'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/" element={<StartGame />} />
         <Route path="/play" element={<PlayGame />}/>
         <Route path="/start" element={<StartGame />} />
-        <Route path='*' element={<div>Not Found</div>} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
 
 

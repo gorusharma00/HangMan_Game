@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        odibee: [ "Odibee Sans", "sans-serif"],
         carter: ["Carter One", "system-ui"],
       },
     },
