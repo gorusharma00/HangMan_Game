@@ -6,8 +6,9 @@ function StartGame(){
     const navigate = useNavigate();
 
     async function handleSubmit(value){
-        const word = await getWord(value)
-        navigate('/play', {state:{ wordSelected: word}})
+        const [word, hint] = await getWord(value)
+        
+        navigate('/play', {state:{ wordSelected: word, hint: hint}})
     }
 
     return(
