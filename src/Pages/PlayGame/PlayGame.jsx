@@ -4,7 +4,7 @@ import MaskedText from "../../components/MaskedText/MaskedText"
 import { useLocation } from "react-router-dom";
 import HangMan from "../../components/HangMan/HangMan";
 import WordHint from "../../components/WordHint/WordHint";
-import WinnerModal from "../../components/WinnerModal/winnerModal";
+import WinnerModal from "../../components/WinnerModal/WinnerModal";
 
 
 function PlayGame(){
