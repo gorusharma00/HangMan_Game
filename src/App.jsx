@@ -12,10 +12,12 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path="/" element={<StartGame />} />
         <Route path="/play" element={<PlayGame />}/>
         <Route path="/start" element={<StartGame />} />
         <Route path='*' element={<div>Not Found</div>} />
       </Routes>
+
 
       <Footer />
     </div>
