@@ -1,6 +1,6 @@
-export async function getWord(value) {
+export async function Nothing(value) {
     const wordUrl = `https://api.datamuse.com/words?rel_syn=${value}&max=10`
-    const apiKey = import.meta.env.VITE_APIKEY;
+    
  
     const response = await fetch(wordUrl);
     const object = await response.json();

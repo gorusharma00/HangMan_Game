@@ -3,8 +3,10 @@ import LetterButtons from "../../components/LetterButtons/LetterButtons"
 import MaskedText from "../../components/MaskedText/MaskedText"
 import { useLocation } from "react-router-dom";
 import HangMan from "../../components/HangMan/HangMan";
-import WordHint from "../../components/WordHint/WordHint";
 import WinnerModal from "../../components/WinnerModal/WinnerModal";
+import HintBtn from "../../components/Button/HintBtn";
+import { useQuery } from "react-query";
+import { getHint } from "../../services/getHint";
 
 
 function PlayGame(){
@@ -18,10 +20,17 @@ function PlayGame(){
 
     const location = useLocation();
 
-    const wordSelected = location.state?.wordSelected
-    const hint = location.state?.hint
+    const wordSelected = location.state?.wordData
+    const wordForapi = wordSelected
+
+    const [showHint, setShowHint] = useState(false)
+
+    const { data, isLoading, isError, error} = useQuery(['getHint', wordForapi], () => getHint(wordSelected), {
+        enabled: showHint,
+        retry: false,
+        cacheTime: 1000 * 60 * 2,
+    })
     
-    const [hintToggle, setHintToggle] = useState(false)
 
 
     const handleLetterClick = function(letter){
@@ -60,7 +69,10 @@ function PlayGame(){
                 <div
                     className="flex w-full justify-center items-center"
                 >
-                    <WordHint hint={hint} hintToggle={hintToggle} setHintToggle={setHintToggle}/>
+                    {!showHint && <HintBtn onClick={() => setShowHint(true)}/>}
+                    {isLoading && <div>Loading...</div>}
+                    {isError && <div>{error}</div>}
+                    <p>{data}</p>
                 </div>
 
                 <div className="">  

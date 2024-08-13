@@ -6,7 +6,9 @@ import PlayGame from './Pages/PlayGame/PlayGame'
 import StartGame from './Pages/StartGame/StartGame'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
 
+
 function App() {
+
   return (
     <div className="flex flex-col min-h-[85vh]">
 

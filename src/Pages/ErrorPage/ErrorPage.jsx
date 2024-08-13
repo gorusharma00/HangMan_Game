@@ -5,7 +5,7 @@ function ErrorPage(){
 
     const location = useLocation();
 
-    const error = location.state?.error
+    const error = location.state?.err
 
     return(
         <div className="flex justify-center items-center w-full flex-grow text-3xl font-carter flex-col gap-5 tracking-wide">
