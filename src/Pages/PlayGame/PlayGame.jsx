@@ -21,14 +21,17 @@ function PlayGame(){
     const location = useLocation();
 
     const wordSelected = location.state?.wordData
-    const wordForapi = wordSelected
 
     const [showHint, setShowHint] = useState(false)
+    const [hintBtn, setHintBtn] = useState(true)
 
-    const { data, isLoading, isError, error} = useQuery(['getHint', wordForapi], () => getHint(wordSelected), {
+
+    const { data, isLoading, isError, error} = useQuery(['getHint', wordSelected], () => getHint(wordSelected), {
         enabled: showHint,
         retry: false,
         cacheTime: 1000 * 60 * 2,
+        onSuccess: () => {setShowHint(false)},
+        onError: () => setShowHint(false),
     })
     
 
@@ -69,9 +72,14 @@ function PlayGame(){
                 <div
                     className="flex w-full justify-center items-center"
                 >
-                    {!showHint && <HintBtn onClick={() => setShowHint(true)}/>}
+                    {hintBtn && <HintBtn 
+                                    onClick={() => {
+                                            setShowHint(true)
+                                            setHintBtn(false)
+                                        }
+                    }/>}
                     {isLoading && <div>Loading...</div>}
-                    {isError && <div>{error}</div>}
+                    {isError && <div>{error.message}</div>}
                     <p>{data}</p>
                 </div>
 
