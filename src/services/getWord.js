@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 
 export async function getWord(value){
     // eslint-disable-next-line no-useless-catch
